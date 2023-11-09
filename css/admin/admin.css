@@ -1,0 +1,365 @@
+@font-face {
+    font-family: 'Helvetica LT Std Roman';
+    src: url('../fonts/HelveticaLTStd-Roman.eot');
+    src: url('../fonts/HelveticaLTStd-Roman.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/HelveticaLTStd-Roman.woff2') format('woff2'),
+        url('../fonts/HelveticaLTStd-Roman.woff') format('woff'),
+        url('../fonts/HelveticaLTStd-Roman.ttf') format('truetype'),
+        url('../fonts/HelveticaLTStd-Roman.svg#HelveticaLTStd-Roman') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeueRegular.eot');
+    src: url('../fonts/HelveticaNeueRegular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/HelveticaNeueRegular.woff2') format('woff2'),
+        url('../fonts/HelveticaNeueRegular.woff') format('woff'),
+        url('../fonts/HelveticaNeueRegular.ttf') format('truetype'),
+        url('../fonts/HelveticaNeueRegular.svg#HelveticaNeueRegular') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue Medium';
+    src: url('../fonts/HelveticaNeue-Medium.eot');
+    src: url('../fonts/HelveticaNeue-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+        url('../fonts/HelveticaNeue-Medium.woff') format('woff'),
+        url('../fonts/HelveticaNeue-Medium.ttf') format('truetype'),
+        url('../fonts/HelveticaNeue-Medium.svg#HelveticaNeue-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue LT Std Roman';
+    src: url('../fonts/HelveticaNeueLTStd-Roman.eot');
+    src: url('../fonts/HelveticaNeueLTStd-Roman.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/HelveticaNeueLTStd-Roman.woff2') format('woff2'),
+        url('../fonts/HelveticaNeueLTStd-Roman.woff') format('woff'),
+        url('../fonts/HelveticaNeueLTStd-Roman.ttf') format('truetype'),
+        url('../fonts/HelveticaNeueLTStd-Roman.svg#HelveticaNeueLTStd-Roman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue LT Std Medium';
+    src: url('../fonts/HelveticaNeueLTStd-Md.eot');
+    src: url('../fonts/HelveticaNeueLTStd-Md.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/HelveticaNeueLTStd-Md.woff2') format('woff2'),
+        url('../fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
+        url('../fonts/HelveticaNeueLTStd-Md.ttf') format('truetype'),
+        url('../fonts/HelveticaNeueLTStd-Md.svg#HelveticaNeueLTStd-Md') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --orange: #DA8956;
+    --darkOrange: #e87622;
+    --darkGray: #353535;
+    --gray: #3c3c3c;
+    --lightGray: #f6f6f6;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Helvetica LT Std Roman';
+    background: var(--lightGray);
+    color: var(--gray);
+    font-size: 16px;
+}
+
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #5c5b5b;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/************/
+/***HEADER***/
+/***********/
+.navbar {
+    padding: 0;
+}
+
+.logo {
+    font-family: 'HelveticaNeue Medium';
+    font-weight: bold;
+    font-size: 48px;
+    color: var(--gray) !important;
+    letter-spacing: 0.05em;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+.nav_menu {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.nav_menu ul li {
+    font-family: 'HelveticaNeue Medium';
+}
+
+.nav_menu ul li a:hover {
+    font-family: 'HelveticaNeue Medium';
+    /* font-weight: bold; */
+}
+
+.nav_menu .menu_list {
+    margin-left: 30px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--gray);
+}
+
+
+
+/************/
+/***SIDEBAR**/
+/***********/
+.sidebar {
+    background: var(--orange);
+    min-height: 650px;
+}
+
+.sidebar ul{
+    padding: 0px;
+}
+.sidebar ul li{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.sidebar ul a {
+    display: block;
+    padding: 18px;
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.sidebar ul a:hover {
+    transition: all 0.3s;
+    margin-left: 5px;
+}
+
+/************/
+/***POSTS**/
+/***********/
+.posts {
+    padding-left: 40px;
+    height: 100%;
+    /* overflow-y: scroll;  */   
+    margin-bottom: 45px;
+}
+
+.posts h2 {
+    text-align: center;
+}
+
+.posts .title-table {
+    margin-bottom: 10px;
+    margin-top: 35px;
+}
+
+.posts .title-table div {
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.posts .post_manage {
+    border-bottom: 1px solid #d3d3d3;
+    padding: 9px 0;
+}
+
+.posts .post_manage .red {
+    color: darkgreen;
+}
+
+.posts .post_manage .red a:hover {
+    color: darkgreen;
+    text-decoration: underline;
+}
+
+
+.posts .post_manage .del a:hover {
+    color: white;
+} 
+
+.posts form .height {
+    margin: 20px 0;
+}
+
+.posts .addMangePost {
+    margin: 0px;
+}
+
+.posts form div #editor {
+    margin: 0;
+    padding: 0;
+}
+
+.post_manage form .checkbox {
+    margin-top: 15px;
+}
+
+.title-table h3{
+    text-align: center;
+}
+
+
+/*******************/
+/**** photos****/
+/******************/
+
+.delete_photo{
+    margin-top: 25px;
+}
+
+.date_picture_logo{
+    position: relative;
+}
+
+.ui-datepicker-trigger{
+    cursor:pointer;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+
+/* pagination */
+
+.pagination_posts {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.pagination_posts ul li {
+    padding-right: 12px;
+}
+
+.pagination_posts ul li a:hover {
+    background: var(--orange);
+    color: var(--white);
+}
+
+.page-item .page-link {
+    color: var(--gray);
+}
+
+.page-item.active .page-link {
+    z-index: 2;
+    color: var(--white);
+    background: var(--orange);
+    border-color: var(--orange);
+    ;
+}
+
+
+/* Category settings */
+.cat_setting ul li{
+    list-style-type: none;
+    display:inline-block;
+    width: 25%;
+
+}
+
+.cat_setting ul li a{
+    color: var(--white);
+}
+
+.cat_setting ul li a:hover{
+    color: var(--white);
+}
+
+/* User settings */
+.user_setting ul li{
+    list-style-type: none;
+    display:inline-block;
+    width: 25%;
+}
+
+.user_setting ul li a{
+    color: var(--white);
+}
+
+.user_setting ul li a:hover{
+    color: var(--white);
+}
+
+/* Posts settings */
+.posts_setting ul li{
+    list-style-type: none;
+    display:inline-block;
+    width: 32%;
+}
+
+.posts_setting ul li a{
+    color: var(--white);
+}
+
+.posts_setting ul li a:hover{
+    color: var(--white);
+}
+
+/* Settings page */
+
+.setting_page ul li{
+    list-style-type: none;
+    display:inline-block;
+}
+
+
+/*******************/
+/**** ERROR MSG****/
+/******************/
+.posts .post_manage .err li {
+    list-style: none;
+    color: red;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+/* ckEditor */
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    min-height: 200px;
+}
+.ck-content .image {
+    /* block images */
+    max-width: 90%;
+    margin: 20px auto;
+}
+
+.single_page__text p img{
+    width: 100% !important;
+}

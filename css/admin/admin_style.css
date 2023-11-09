@@ -1,0 +1,262 @@
+body {
+    background-image: url(/blog/img/bg.gif);
+}
+
+
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    padding: 15px;
+    margin: 0;
+}
+
+#wrapper {
+    width: 690px;
+    margin: 20px auto auto auto;
+    /* border: 1px solid #4b4a4a; */
+
+}
+
+#header {
+    background-image: url(/blog/img/header.jpg);
+    width: 690px;
+    height: 100px;
+
+
+}
+
+
+#sideBar {
+    background-color: #f6f6f6f6;
+    width: 172px;
+    border-right: 1px solid #42424242;
+
+}
+
+
+#contentsBlock {
+    background-color: white;
+    width: 490px;
+    margin-left: 10px;
+
+
+
+}
+
+
+#footer {
+    background-image: url(/blog/img/footer.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    height: 18px;
+
+}
+
+/*sideBar*/
+p.title {
+    background-color: #A72E37;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+}
+
+#coolmenu {
+    border: 1px solid gray;
+    /*Стиль рамки */
+    border-bottom-width: 0;
+    width: 90%;
+    /*Ширина меню */
+    background-color: #f6f6f6;
+    /*Фоновый цвет ячейки*/
+    margin: 8px;
+    /*Ширина отступов*/
+}
+
+* html #coolmenu {
+    width: 150px;
+    /*Ширина меню для Internet Explorer*/
+}
+
+#coolmenu a {
+    font: bold 13px Verdana;
+    /*Шрифт текста*/
+    padding: 2px;
+    /*Внутренний отсутп текста ссылки от краев ячейки*/
+    padding-left: 4px;
+    /*Внутренний отсутп текста ссылки от левого края ячейки*/
+    display: block;
+    width: 100%;
+    /*Ширина ячейки*/
+    color: #000000;
+    /*Цвет текста*/
+    text-decoration: none;
+    /*Подчеркивание у ссылок - нет*/
+    border-bottom: 1px solid gray;
+}
+
+html>body #coolmenu a {
+    width: auto;
+}
+
+#coolmenu a:hover {
+    background-color: #cccccc;
+    /*Фоновый цвет ячейки при наведение курсора*/
+    color: #000000;
+    /*Цвет текста при наведении курсора*/
+}
+
+/*form*/
+p.title2 {
+    background-color: #C4C92F;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+}
+
+.form1 {
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+.form3 {
+    font-family: Verdana;
+    font-size: 11px;
+}
+
+.formm {
+    border: 1px solid #cccccc;
+    margin: 5px;
+}
+
+.lesson {
+    background-color: #f6f6f6f6;
+    border: 1px solid #cccccc;
+    width: 95%;
+    margin: auto;
+
+
+}
+
+.lesson a {
+    color: #A72E37;
+}
+
+.lesson a:hover {
+    color: rgb(158, 77, 1);
+}
+
+.lesson p {
+    padding-top: 5px;
+
+}
+
+.lesson_title {
+    background-color: #f6f6f6f6;
+    border: solid 1px grey;
+    border-radius: 5px;
+    margin-top: 5px;
+    ;
+
+}
+
+
+.listName {
+    font-size: 14px;
+    padding-bottom: 0;
+
+}
+
+.listNameP {
+    color: #4b4a4a;
+    font-size: 11px;
+    padding-bottom: 5px;
+
+
+}
+
+h2 {
+    text-align: center;
+    color: #A72E37;
+    margin: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+.title a {
+    color: #f6f6f6;
+    text-decoration: none;
+}
+
+/* Error Masage */
+form .err_massage {
+    color: #A72E37;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+
+
+
+
+/* Admin 2 */
+
+
+.container{
+    margin: 0 ;
+    padding: 0;
+}
+#wrapper{
+    min-height: 700px;
+}
+
+.border {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.page-content-wrapper {
+    color: #212529;
+}
+
+/* Sidebar */
+.accordion-body .row{
+    margin: 0;
+    margin-bottom: -17px;
+
+}
+.accord-panel a {
+    color: #212529;
+    text-decoration: none;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 6px;
+    transition: all 0.2s;
+}
+.accord-panel a:hover {
+    transition: all 0.2s;
+    padding-left: 20px;
+}
+
+.sidebar{
+    min-height: 680px;
+    border-right: 1px solid #dee2e6;
+    padding: 0;
+}
+
+.user span {
+    margin-left: 10px;
+}
+
+.nav-link{
+    border-left: 1px solid #dee2e6 !important;
+}
+
+/* Footer */
+
+.footer{
+    border: 1px solid #dee2e6;
+}
