@@ -25,8 +25,8 @@ $selectPagesInformation = fetch([
                 $categoryAndPostNames = executeQuery("SELECT blog_posts.id, blog_posts.title,  blog_categories.id as category_id, blog_categories.name as category_name FROM blog_posts 
                     LEFT JOIN blog_categories ON blog_posts.category_id = blog_categories.id WHERE publish_status = 1 AND blog_posts.id = ? ", [$_GET['page']]);
                 ?>
-                <li><a href=".">Home</a></li>
-                <li><a href="categories?page=<?php echo  $categoryAndPostNames[0]['category_id']; ?>">> <?php echo  $categoryAndPostNames[0]['category_name']; ?></a></li>
+                <li><a href="<?php echo BASE_URL ?>">Home</a></li>
+                <li><a href="<?php echo BASE_URL ?>categories?page=<?php echo  $categoryAndPostNames[0]['category_id']; ?>">> <?php echo  $categoryAndPostNames[0]['category_name']; ?></a></li>
                 <li class=active_post> > <?php echo  $categoryAndPostNames[0]['title']; ?></li>
             </ul>
 

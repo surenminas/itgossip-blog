@@ -11,7 +11,7 @@
                         HTML, CSS, JavaScript, and PHP. As a self-taught web developer from Armenia, I understand the importance of having access to quality 
                         resources to improve your coding skills. Here on ITGossip";
 
-                        echo str_size_header($string, 350, "... "); ?><a href="about">Read more</a>
+                        echo str_size_header($string, 350, "... "); ?><a href="<?php echo BASE_URL ?>about">Read more</a>
                     </p>
                 </div>
             </div>

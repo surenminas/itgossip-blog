@@ -28,7 +28,7 @@
     ?>
 
     <!-- link frst pagei >>> -->
-    <p align="center" class="title_default_page"><a href=".">Главная</a></p>
+    <p align="center" class="title_default_page"><a href="<?php echo BASE_URL ?>">It Gossip</a></p>
     <!-- link frst pagei <<< -->
 
     <!-- search >>>  -->
@@ -76,7 +76,7 @@
         ]);
         ?>
         <?php foreach ($categories as $key => $category) :  ?>
-            <a href='categories?id=<?php echo $category['id']; ?>'><?php echo $category['name']; ?> (<?php echo $category['posts_count']; ?>)</a>
+            <a href='<?php echo BASE_URL ?>categories?id=<?php echo $category['id']; ?>'><?php echo $category['name']; ?> (<?php echo $category['posts_count']; ?>)</a>
         <?php endforeach; ?>
     </div>
     <!--  categories menu <<< -->
@@ -106,7 +106,7 @@
         ]);
         ?>
         <?php foreach ($lastAuthorPosts as $key => $lastAuthorPost) :  ?>
-            <a href='single?id=<?php echo $lastAuthorPost['id']; ?>'><?php echo str_size_header($lastAuthorPost['title'], $symbol = 25, '...'); ?></a>
+            <a href='<?php echo BASE_URL ?>single?id=<?php echo $lastAuthorPost['id']; ?>'><?php echo str_size_header($lastAuthorPost['title'], $symbol = 25, '...'); ?></a>
         <?php endforeach; ?>
     </div>
     <!--  last posts <<< -->
@@ -114,8 +114,8 @@
     <!--  API >>> -->
     <p align="center" class="title">API</p>
     <div id="coolmenu">
-        <a href='simple-api?type=post'>Simple API</a>
-        <a href='simpleAPI'>CURL to simple API</a>
+        <a href='<?php echo BASE_URL ?>simple-api?type=post'>Simple API</a>
+        <a href='<?php echo BASE_URL ?>simpleAPI'>CURL to simple API</a>
     </div>
     <!--  API <<< -->
 

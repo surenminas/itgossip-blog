@@ -60,8 +60,6 @@ contactForm.onsubmit = (e) => {
             dataType: "json",
             data: dataForm,
             success: function (data, status, xhr) {
-
-
                 if (data.error == 'Mail send') {
                     $(".comment_form").html("");
 
@@ -78,7 +76,7 @@ contactForm.onsubmit = (e) => {
                 }
             },
             error: function (xhr) {
-                $(".error_txt_contact").css('display','block')
+                $(".error_txt_contact").css('display', 'block')
             }
         });
     }

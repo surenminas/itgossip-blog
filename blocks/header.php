@@ -15,11 +15,11 @@ if (isset($_POST['logout'])) {
     <meta name="description" content="<?php if (isset($selectPagesInformation['meta_d'])) echo $selectPagesInformation['meta_d']; ?>">
     <meta name="keywords" content="<?php if (isset($selectPagesInformation['meta_k'])) echo $selectPagesInformation['meta_k']; ?>">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo baseUrl() ?>css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo baseUrl() ?>css/main.css">
-    
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>css/main.css">
+
     <!-- logo -->
-    <link rel="shortcut icon" href="<?php echo baseUrl() ?>uploads/blog_logo_2.png" sizes="180x180">
+    <link rel="shortcut icon" href="<?php echo BASE_URL ?>uploads/blog_logo_2.png" sizes="180x180">
     <!-- awesome -->
     <script src="https://kit.fontawesome.com/74946a2e9f.js" crossorigin="anonymous"></script>
     <title><?php if (isset($selectPagesInformation['title'])) echo $selectPagesInformation['title']; ?></title>
@@ -30,7 +30,7 @@ if (isset($_POST['logout'])) {
     <header>
         <div class="container">
             <nav class="navbar navbar-expand-lg flex-wrap justify-content-between navbar-light bg-light">
-                <a class="navbar-brand logo" href="."><span>IT</span>Gossip</a>
+                <a class="navbar-brand logo" href="<?php echo BASE_URL ?>"><span>IT</span>Gossip</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,15 +41,15 @@ if (isset($_POST['logout'])) {
                         <ul class="navbar-nav mr-1 mb-2 mb-lg-0 active">
 
                             <li class="nav-item menu_list">
-                                <a class="nav-link active" aria-current="page" href=".">Home</a>
+                                <a class="nav-link active" aria-current="page" href="<?php echo BASE_URL ?>">Home</a>
                             </li>
 
                             <li class="nav-item dropdown menu_list">
-                                <a class="nav-link dropdown-toggle" href="author" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="<?php echo BASE_URL ?>author" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Authors
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="author">All Authors</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>author">All Authors</a></li>
                                     <li>
                                         <hr class="dropdown-divider dropdown_line_divider">
                                     </li>
@@ -75,7 +75,7 @@ if (isset($_POST['logout'])) {
                                     ]);
                                     ?>
                                     <?php foreach ($selectAuthorsName as $key => $name) :  ?>
-                                        <li><a class="dropdown-item" href="author?author_id=<?php echo $name['id']; ?>"><?php echo $name['username']; ?> (<?php echo $name['author_posts_count']; ?>)</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>author?author_id=<?php echo $name['id']; ?>"><?php echo $name['username']; ?> (<?php echo $name['author_posts_count']; ?>)</a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </li>
@@ -103,13 +103,13 @@ if (isset($_POST['logout'])) {
                                     ]);
                                     ?>
                                     <?php foreach ($categories as $category) : ?>
-                                        <li><a class="dropdown-item" href="categories?page=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>categories?page=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </li>
 
                             <li class="nav-item menu_list">
-                                <a class="nav-link" aria-current="page" href="gallery">Gallery</a>
+                                <a class="nav-link" aria-current="page" href="<?php echo BASE_URL ?>gallery">Gallery</a>
                             </li>
 
                             <li class="nav-item dropdown menu_list">
@@ -117,15 +117,15 @@ if (isset($_POST['logout'])) {
                                     Other Links
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="about">About Us</a></li>
-                                    <li><a class="dropdown-item" href="contact">Contact Us</a></li>
-                                    <li><a class="dropdown-item" href="simple-api?type=post">Simple API</a></li>
-                                    <li><a class="dropdown-item" href="simpleAPI">CURL to simple API</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>about">About Us</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>contact">Contact Us</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>simple-api?type=post">Simple API</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>simpleAPI">CURL to simple API</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav-item menu_list" id="search">
-                                <img src="<?php echo baseUrl() ?>img/search.svg" alt="Search for materials">
+                                <img src="<?php echo BASE_URL ?>img/search.svg" alt="Search for materials">
                             </li>
 
 
@@ -137,7 +137,7 @@ if (isset($_POST['logout'])) {
                                         <?php if (getUserRole() === "administrator" || getUserRole() === "content_manager") : ?>
                                             <li><a class="dropdown-item" href="admin">Admin Panel</a></li>
                                         <?php endif; ?>
-                                        <li><a class="dropdown-item" href="profile">Profile</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>profile">Profile</a></li>
                                         <div class="logout">
                                             <form action="" method="post">
                                                 <input type="submit" name="logout" value="Logout" class="dropdown-item" />
@@ -151,7 +151,7 @@ if (isset($_POST['logout'])) {
                                     <button class="nav-link login" aria-current="page" id="login_open">Login</button>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link signup" aria-current="page" href="registration">Signup</a>
+                                    <a class="nav-link signup" aria-current="page" href="<?php echo BASE_URL ?>registration">Signup</a>
                                 </li>
 
                             <?php } ?>
@@ -187,7 +187,7 @@ if (isset($_POST['logout'])) {
                             <div id="error_login_psw_form"></div>
 
                             <div class="forgot">
-                                <a href="forgot">Forgot password?</a>
+                                <a href="<?php echo BASE_URL ?>forgot">Forgot password?</a>
                             </div>
 
                             <button type="submit" class="btn" name="enter">Enter</button>

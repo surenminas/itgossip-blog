@@ -5,7 +5,7 @@
     <div class="row">
         <p><?php echo $mostViewPost[0]['title']; ?></p>
         <div class="text-center">
-            <a href="single?page=<?php echo $mostViewPost[0]['id']; ?>">
+            <a href="<?php echo BASE_URL ?>single?page=<?php echo $mostViewPost[0]['id']; ?>">
                 <button class="btn hero__button">Read more</button>
             </a>
         </div>

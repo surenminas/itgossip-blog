@@ -4,8 +4,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     throw new \Exception("Page not found", 404);
 }
 
+/////////////////////
+///// COMMENT ///////
+/////////////////////
 
-// comment
 if (isset($_POST['action']) && $_POST['action'] == 'add_comment') {
 
 
@@ -28,8 +30,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'add_comment') {
     );
 }
 
+///////////////////
+///// LOGIN ///////
+///////////////////
 
-// Login chack
 if (isset($_POST['email']) && isset($_POST['psw'])) {
     $response = ["error" => []];
 
@@ -50,7 +54,7 @@ if (isset($_POST['email']) && isset($_POST['psw'])) {
         )
     ], [$email]);
 
-    if(!$selectUserInfo){
+    if (!$selectUserInfo) {
         $response["error"][] = "Login Password Not Valid";
     }
 
@@ -74,24 +78,24 @@ if (isset($_POST['email']) && isset($_POST['psw'])) {
 
         if (password_verify($pswd, $selectUserInfo['password'])) {
 
-            // $selectUserInfo = fetch([
-            //     'select' => '*',
-            //     'table' => 'users',
-            //     'where' => array(
-            //         // 'condition' => 'AND',
-            //         'fields' => array(
-            //             array(
-            //                 'key' => 'email',
-            //                 'value' => ':email'
-            //             )
-            //             // array(
-            //             //     'key' => 'password',
-            //             //     'value' => ':password'
-            //             // ),
+            $selectUserInfo = fetch([
+                'select' => '*',
+                'table' => 'users',
+                'where' => array(
+                    // 'condition' => 'AND',
+                    'fields' => array(
+                        array(
+                            'key' => 'email',
+                            'value' => ':email'
+                        )
+                        // array(
+                        //     'key' => 'password',
+                        //     'value' => ':password'
+                        // ),
 
-            //         )
-            //     )
-            // ], ['email' => $email]);
+                    )
+                )
+            ], ['email' => $email]);
 
 
             foreach ($selectUserInfo as $k => $v) {
@@ -99,9 +103,7 @@ if (isset($_POST['email']) && isset($_POST['psw'])) {
                     $_SESSION['user'][$k] = $v;
                 }
             }
-            // $_SESSION['username'] = $selectUserInfo['username'];
-            // $_SESSION['status'] = $selectUserInfo['status'];
-            // $_SESSION['id'] = $selectUserInfo['id'];
+            $_SESSION['last_activity'] = time(); // update last activity time stamp
         } else {
             $response["error"][] = "Login Password Not Valid";
         }
@@ -109,17 +111,22 @@ if (isset($_POST['email']) && isset($_POST['psw'])) {
     echo json_encode($response['error']);
 }
 
-// contact
+////////////////////
+///// CONTACT //////
+///////////////////
+
+
 if (isset($_POST['name']) && isset($_POST['email'])) {
 
-
+    require_once(basePath() . "/app/phpmailer/PHPMailerAutoload.php");
+    $mail = new PHPMailer;
+    $mail->CharSet = 'utf-8';
 
     $response = ["error" => []];
 
     $name = $_POST['name'];
     $email = $_POST['email'];
     $text = $_POST['text'];
-
 
     $email = (filter_var($email, FILTER_VALIDATE_EMAIL));
 
@@ -144,38 +151,55 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     }
 
     if (empty($response["error"])) {
-        if (addContactIntodatabase($name, $email, $text)) {
-            $userSessionID = '';
-            if (isset($_SESSION['user']['id'])) {
-                $userSessionID = ", Session ID: " . $_SESSION['user']['id'];
-            }
-            $getAdminEmailQuery = fetch([
-                'select' => 'text',
-                'table' => 'settings',
-                'where' => array(
-                    'fields' => array(
-                        array(
-                            'key' => 'page',
-                            'value' => '?'
-                        )
-                    )
-                )
-            ], ['admin_email']);
 
-            $to = $getAdminEmailQuery['text'];
-            $subject = "От сайта: It Gossip'" . $userSessionID . "', Email: " . $email;
-            $msg = $text;
-            mail($to, $subject, $msg);
+        $userSessionID = null;
+
+        if (isset($_SESSION['user']['id'])) {
+            $userSessionID = "User ID: " . $_SESSION['user']['id'];
+        }else{
+            $userSessionID = "User not login or not registration ";
+
+        }
+
+
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'hometvyerevan@gmail.com';                     //SMTP username
+        $mail->Password   = 'ijntuarcrwovpmou';                               //SMTP password
+        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->CharSet    = 'UTF-8';
+
+        //Recipients
+        // $mail->setFrom($mail);                               // who to send the mail
+        $mail->addAddress('hometvyerevan@gmail.com');     // to whom the mail will sent 
+
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = "Web page It Gossip, Email: $email";
+        $mail->Body    = "$userSessionID, <br> Email: $email <br><br>'Message: <br> $text";
+
+        if ($mail->send()) {
             $response["error"][] = "Mail send";
         } else {
             $response["error"][] = "Mail not send";
         }
-        echo json_encode($response);
+    } else {
+        $response["error"][] = "Mail not send";
     }
+    echo json_encode($response);
 }
 
-// Registration
+//////////////////////////
+///// REGISTRATION ///////
+//////////////////////////
+
 if (isset($_POST['name_reg']) && isset($_POST['email_reg'])) {
+	
 
     $responsRegistration = ['error' => []];
 
@@ -233,10 +257,6 @@ if (isset($_POST['name_reg']) && isset($_POST['email_reg'])) {
             )
         ], [$email]);
 
-        // if (!empty($checkLoginBusy)) {
-        //     $respons['error']['name'] = $name;
-        // }
-
         if (!empty($checkEmailBusy)) {
             $responsRegistration['error'][] = "email busy";
         }
@@ -244,17 +264,20 @@ if (isset($_POST['name_reg']) && isset($_POST['email_reg'])) {
         if (empty($checkLoginBusy) && empty($checkEmailBusy)) {
             $pswd = password_hash($pswd1, PASSWORD_DEFAULT);
             $img = "avatar_2.png";
-                $registration = executeQuery(
-                    "INSERT INTO users (username, email, img, password) VALUES (?, ?, ?, ?)",
-                    [$name, $email, $img, $pswd]
-                );
+            $registration = executeQuery(
+                "INSERT INTO users (username, email, img, password) VALUES (?, ?, ?, ?)",
+                [$name, $email, $img, $pswd]
+            );
         }
     }
     echo json_encode($responsRegistration);
 }
 
 
-// Subscribe
+////////////////////////
+///// SUBSCRIBE ///////
+///////////////////////
+
 if (isset($_POST['subscribe_name']) && isset($_POST['subscribe_email'])) {
 
     $subscribeError = ['error' => []];
@@ -336,8 +359,9 @@ if (isset($_POST['subscribe_name']) && isset($_POST['subscribe_email'])) {
     echo json_encode($subscribeError);
 }
 
-
-// change password
+/////////////////////////////
+///// CHANGE PASSWORD ///////
+/////////////////////////////
 
 if (isset($_POST['action']) && $_POST['action'] == 'change') {
 
@@ -371,14 +395,15 @@ if (isset($_POST['action']) && $_POST['action'] == 'change') {
 }
 
 
-//
+//??????
 
 if (isset($_POST['action']) && $_POST['action'] == 'image') {
+    exit('11111111');
     if (!$_FILES['file']['error']) {
         $name = md5(rand(100, 200));
         $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
         $filename = $name .
-        '.' . $ext;
+            '.' . $ext;
         $destination = 'uploads/posts_img/' . $filename; //change this directory
         $location = $_FILES["file"]["tmp_name"];
         move_uploaded_file($location, $destination);

@@ -51,7 +51,7 @@
     // // debug($lastAuthorPostsAndCategory);exit;
     // $arrayAPI = [];  
     // foreach($lastAuthorPostsAndCategory as $key => $value){
-    //         $value['img'] = baseUrl() . "uploads/photos/" . $value['img'];
+    //         $value['img'] = BASE_DIR . "uploads/photos/" . $value['img'];
     //         $arrayAPI [] = $value;
     // }   
 
