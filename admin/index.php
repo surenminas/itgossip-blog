@@ -8,8 +8,6 @@ define('BASE_DIR', __DIR__);
 define('ROOT', dirname(__DIR__));
 define('ABSOLUTE_URL', "http://localhost/blog/admin/"); // for relative path "http://localhost/blog/" example
 
-
-
 include ROOT . "/functions.php";
 include ROOT . "/admin/admin_functions.php";
 new ErrorHandler('admin');

@@ -115,12 +115,13 @@ if (isset($_GET['author_id'])) {
         'limit' => "$perPage",
         'offset' => "$offset",
         'where' => array(
+            'condition' => 'AND',
             'fields' => array(
                 array(
                     'key' => '1',
                     'value' => '?',
 
-                )
+                ),
             )
         )
     ], ['1']);
@@ -137,8 +138,9 @@ if (isset($_GET['author_id'])) {
             </a>
         <?php endforeach; ?>
     </ul>
+
+    <!-- Pagination >>> -->
     <?php if ($totalPagesCount > 1) : ?>
-        <!-- Pagination >>> -->
         <div class="pagination_posts">
             <nav aria-label="Page navigation example pagination_posts">
                 <ul class="pagination">

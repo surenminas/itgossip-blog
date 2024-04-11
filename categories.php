@@ -126,7 +126,86 @@ if (isset($_GET['page'])) {
 
 <?php } else { ?>
 
-    <h2>No show categories</h2>
+    <?php
+    $countPostRows = executeQuery("SELECT COUNT(*) as totalRowsCount FROM `blog_categories` WHERE 1");
+    $totalRowsCount = $countPostRows[0]["totalRowsCount"];
+
+    $page = isset($_GET['a']) ? $_GET['a'] : 1;
+    $perPage = 15;
+    $offset = ($page - 1) * $perPage;
+
+    $totalPagesCount = ceil($totalRowsCount / $perPage);
+
+    $paginationRange = 2;
+
+    $caregories = fetchAll([
+        'select' => 'id, name, posts_count',
+        'table' => 'blog_categories',
+        'limit' => "$perPage",
+        'offset' => "$offset",
+        'where' => array(
+            'fields' => array(
+                array(
+                    'key' => 'id',
+                    'value' => '5',
+                    'operator' => '!='
+                )
+            )
+        )
+    ]);
+
+
+    ?>
+    <div class=" author_page d-flex bg-white">Categories</div>
+    <ul class="list-group">
+        <?php foreach ($caregories as $key => $category) : ?>
+            <a class="list-group-item list-group-item-action" href="categories?page=<?php echo $category['id']; ?>">
+                <li class="d-flex justify-content-between align-items-center">
+                    <?php echo $category['name']; ?>
+                    <span class="badge bg-primary rounded-pill"><?php echo $category['posts_count']; ?></span>
+                </li>
+            </a>
+        <?php endforeach; ?>
+    </ul>
+    <?php if ($totalPagesCount > 1) : ?>
+        <!-- Pagination >>> -->
+        <div class="pagination_posts">
+            <nav aria-label="Page navigation example pagination_posts">
+                <ul class="pagination">
+
+                    <?php if ($page != 1) : ?>
+                        <li class="page-item"><a class="page-link" href="?a=1">First</a></li>
+                        <li class="page-item"><a class="page-link" href="?a=<?php echo $page - 1 ?>">Previous</a></li>
+                    <?php endif; ?>
+
+
+                    <?php for ($i = ($page - $paginationRange); $i < $page; $i++) {  ?>
+                        <?php if ($i < 1) continue; ?>
+                        <li class="page-item"><a class="page-link" href="?a=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                    <?php } ?>
+
+                    <!-- page 1 > -->
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link bs-gray-100"><?php echo $page; ?></span>
+                    </li>
+                    <!-- page 1 < -->
+
+                    <?php for ($i = $page; $i < ($page + $paginationRange); $i++) {  ?>
+                        <?php if (($i + 1)  > $totalPagesCount) break; ?>
+                        <li class="page-item"><a class="page-link" href="?a=<?php echo $i + 1; ?>"><?php echo $i + 1; ?></a></li>
+                    <?php } ?>
+
+
+                    <?php if ($page != $totalPagesCount) : ?>
+                        <li class="page-item"><a class="page-link" href="?a=<?php echo $page + 1 ?>">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="?a=<?php echo $totalPagesCount; ?>">Last</a></li>
+                    <?php endif; // LAST 
+                    ?>
+                </ul>
+            </nav>
+        </div>
+    <?php endif; ?>
+    <!-- Pagination <<< -->
 
 
 <?php } ?>

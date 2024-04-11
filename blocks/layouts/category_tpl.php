@@ -22,13 +22,13 @@
                     ], [$_GET['page']]);
                 ?>
 
-                    <li><a href=".">Home ></a></li>
-                    <li><a href="categories">Categories ></a></li>
+                    <li><a href="<?php echo BASE_URL ?>">Home ></a></li>
+                    <li><a href="<?php echo BASE_URL ?>categories">Categories ></a></li>
                     <li class="active_page"> <?php echo $selectCategoryName['name']; ?></li>
 
                 <?php } else { ?>
 
-                    <li><a href=".">Home ></a></li>
+                    <li><a href="<?php echo BASE_URL ?>">Home ></a></li>
                     <li class="active_page"> Categories</li>
                 <?php } ?>
             </ul>

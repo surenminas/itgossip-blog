@@ -4,10 +4,10 @@
             <h5>API</h5>
             <ul class="api_sidebar_list">
                 <li>
-                    <a href='simple-api?type=post'>Simple API</a>
+                    <a href='<?php echo BASE_URL ?>simple-api?type=post'>Simple API</a>
                 </li>
                 <li>
-                    <a href='simpleAPI'>CURL to simple API</a>
+                    <a href='<?php echo BASE_URL ?>simpleAPI'>CURL to simple API</a>
                 </li>
             </ul>
         </div>
@@ -40,10 +40,10 @@
             <?php foreach ($last_4_posts as $key => $posts_img) : ?>
                 <div class="lastests_posts_with_photos__block">
                     <div class="lastests_posts_with_photos__img">
-                        <a href="single?page=<?php echo $posts_img['id']; ?>"><img src="uploads/posts_img/<?php echo $posts_img['img']; ?>"></a>
+                        <a href="<?php echo BASE_URL ?>single?page=<?php echo $posts_img['id']; ?>"><img src="uploads/posts_img/<?php echo $posts_img['img']; ?>"></a>
                     </div>
                     <div class="lastests_posts_with_photos__text">
-                        <p><a href="single?page=<?php echo $posts_img['id']; ?>"><?php echo $posts_img['title'] ?></a></p>
+                        <p><a href="<?php echo BASE_URL ?>single?page=<?php echo $posts_img['id']; ?>"><?php echo $posts_img['title'] ?></a></p>
                     </div>
                 </div>
             <?php endforeach; ?>

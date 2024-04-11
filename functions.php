@@ -18,7 +18,6 @@ function debug($test, $args = false)
         var_dump($test);
         echo "</pre>";
     }
-
 }
 
 
@@ -33,10 +32,19 @@ function logOut($refresh = false)
         session_destroy();
         unset($_SESSION);
         redirect($_SERVER['HTTP_REFERER'] = ".");
-        // header("Refresh:0");
     } else {
         session_destroy();
         unset($_SESSION);
+    }
+}
+
+function lastUserActivity()
+{
+    if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > 86400) {
+        // last request was more than 1 day = 86400 seconds ago 
+        session_unset($_SESSION); // unset $_SESSION variable for the run-time
+        session_destroy(); // destroy session data in storage
+        header("location: main");    // redirect to login page
     }
 }
 
@@ -287,18 +295,24 @@ function executeQuery($sqlString, $params = [])
     }
 }
 
-function baseUrl()
+function baseUrl($protocol = true, $host = true)
 {
+    if ($protocol) {
+        $protocol = 'http://';
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+            $protocol = 'https://';
+        }
+    } else $protocol = '';
 
-    $protocol = 'http';
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
-        $protocol = 'https';
-    }
+    if ($host) {
+        $host = $_SERVER['HTTP_HOST'];
+    } else $host = '';
+
 
     $dir =  str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-    return $protocol . "://" . $_SERVER['SERVER_NAME'] . $dir;
+    var_dump($protocol . "|" . $host . "|" . $dir);
 
-    //return "http://localhost/blog";
+    //return $protocol . $host . $dir;
 }
 
 
@@ -309,7 +323,7 @@ function basePath()
 
 function basePathAdmin()
 {
-    return dirname(__DIR__)."blog";
+    return dirname(__DIR__) . "blog";
 }
 
 
@@ -383,8 +397,6 @@ function getExchangeRates()
 
     // close curl resource to free up system resources
     curl_close($ch);
-
-
 }
 
 function getExchangeRatesAmd(): array
@@ -405,14 +417,14 @@ function getExchangeRatesAmd(): array
 
 
     $attributs = [
-        'USD' => '', 
-        'GBP' => '', 
-        'EUR' => '', 
-        'GEL' => '', 
+        'USD' => '',
+        'EUR' => '',
+        'GBP' => '',
+        'GEL' => '',
         'RUB' => ''
     ];
 
-    foreach($outputArray as $key => $value){
+    foreach ($outputArray as $key => $value) {
 
         if (array_key_exists($key, $attributs)) {
             $attributs[$key] = $value;
@@ -433,28 +445,28 @@ function getActionStyleAndScript()
 {
 
     $action = Router::getRoute();
-    $filesPathActionScript = 'actions_scripts\\' . $action['action'] . '.js';
-    $filesPathActonStylesheet = 'actions_stylesheet\\' . $action['action'] . '.css';
+    $filesPathActionScript = 'actions_scripts/' . $action['action'] . '.js';
+    $filesPathActonStylesheet = 'actions_stylesheet/' . $action['action'] . '.css';
 
 
-    if (file_exists(basePath() . '\js\\' . $filesPathActionScript)) {
-        $GLOBALS['allStylesheetAndScript']['script'][] = 'js\\' . $filesPathActionScript;
+    if (file_exists(basePath() . '/js/' . $filesPathActionScript)) {
+        $GLOBALS['allStylesheetAndScript']['script'][] = 'js/' . $filesPathActionScript;
     }
 
-    if (file_exists(basePath() . '\css\\' . $filesPathActonStylesheet)) {
-        $GLOBALS['allStylesheetAndScript']['stylesheet'][] = 'css\\' . $filesPathActonStylesheet;
+    if (file_exists(basePath() . '/css/' . $filesPathActonStylesheet)) {
+        $GLOBALS['allStylesheetAndScript']['stylesheet'][] = 'css/' . $filesPathActonStylesheet;
     }
 }
 
 function addCustemStylesheetAndScript($fileExtension, $scriptPath)
 {
 
-    if (file_exists(basePath() . '\\' . $scriptPath)) {
+    if (file_exists(basePath() . '/' . $scriptPath)) {
         if ($fileExtension == 'js') {
-            $GLOBALS['allStylesheetAndScript']['script'][] = '\blog\\' . $scriptPath;
+            $GLOBALS['allStylesheetAndScript']['script'][] = '/blog/' . $scriptPath;
         }
         if ($fileExtension == 'css') {
-            $GLOBALS['allStylesheetAndScript']['stylesheet'][] = '\blog\\' . $scriptPath;
+            $GLOBALS['allStylesheetAndScript']['stylesheet'][] = '/blog/' . $scriptPath;
         }
     } else {
         return false;
@@ -462,10 +474,10 @@ function addCustemStylesheetAndScript($fileExtension, $scriptPath)
 }
 
 // for redirect
-function redirect($http = false)
+function redirect($host = false)
 {
-    if ($http) {
-        $redirect = $http;
+    if ($host) {
+        $redirect = $host;
     } else {
         $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '.';
     }
@@ -528,7 +540,7 @@ function creatHtmlTegForComm($item)
                 <p><?php echo $item['text']; ?></p>
             </div>
         </div>
-        
+
         <!-- Reply btn toggle >>> -->
         <div class="reply"><span>Reply</span></div>
         <!-- Reply btn toggle <<< -->

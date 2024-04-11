@@ -22,21 +22,10 @@ $selectPagesInformation = fetch([
 <div class="breadcrumb">
     <div class="container text-center">
         <div class="row">
-            <?php if (isset($_GET['author_id'])) : ?>
-                <?php $authorName = executeQuery("SELECT username FROM users WHERE id = ?", [$_GET['author_id']]); ?>
-                <h1><?php echo $authorName[0]['username'] ?></h1>
-            <?php else : ?>
-                <h1>Authors</h1>
-            <?php endif; ?>
+            <h1>About Us</h1>
             <ul>
                 <li><a href="<?php echo BASE_URL ?>">Home</a></li>
-                <?php if (isset($_GET['author_id'])) : ?>
-                    <li><a href="<?php echo BASE_URL ?>author">> Authors</a></li>
-                    <li class="active_page">> <?php echo $authorName[0]['username'] ?></li>
-                <?php else : ?>
-                    <li class="active_page">> Authors</li>
-                <?php endif; ?>
-
+                <li class="active_page">> About Us</li>
             </ul>
         </div>
     </div>
