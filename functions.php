@@ -415,7 +415,6 @@ function getExchangeRatesAmd(): array
     $output = curl_exec($ch);
     $outputArray = json_decode($output, true);
 
-
     $attributs = [
         'USD' => '',
         'EUR' => '',

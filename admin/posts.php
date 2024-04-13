@@ -395,13 +395,13 @@ if (isset($_GET['id'])) {
 <?php
 
 //Summernote editor
-addCustemStylesheetAndScript('js', 'app\summernote\summernote.min.js');
-addCustemStylesheetAndScript('js', 'js\admin\post_edit.js');
+addCustemStylesheetAndScript('js', 'app/summernote/summernote.min.js');
+addCustemStylesheetAndScript('js', 'js/admin/post_edit.js');
 
 
 //datepicker 
-addCustemStylesheetAndScript('css', 'app\datepicker\jquery-ui.min.css');
-addCustemStylesheetAndScript('js', 'app\datepicker\jquery-ui.min.js');
-addCustemStylesheetAndScript('js', 'js\admin\datepickerScript.js');
+addCustemStylesheetAndScript('css', 'app/datepicker/jquery-ui.min.css');
+addCustemStylesheetAndScript('js', 'app/datepicker/jquery-ui.min.js');
+addCustemStylesheetAndScript('js', 'js/admin/datepickerScript.js');
 
 ?>

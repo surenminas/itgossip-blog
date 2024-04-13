@@ -119,8 +119,8 @@ if (isset($_POST['logout'])) {
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a class="dropdown-item" href="<?php echo BASE_URL ?>about">About Us</a></li>
                                     <li><a class="dropdown-item" href="<?php echo BASE_URL ?>contact">Contact Us</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>simple-api?type=post">Simple API</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>simpleAPI">CURL to simple API</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>simple-api?type=post">API URL</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>simpleAPI">API</a></li>
                                 </ul>
                             </li>
 

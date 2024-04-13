@@ -8,6 +8,7 @@ define('ROOT', dirname(__DIR__));
 define('BASE_URL', "http://localhost/blog/"); // for relative path "http://localhost/blog/" example
 
 include BASE_DIR . "/functions.php";
+
 new ErrorHandler('front');
 require BASE_DIR . '/classes/Router.php';
 require BASE_DIR . '/classes/Cache.php';

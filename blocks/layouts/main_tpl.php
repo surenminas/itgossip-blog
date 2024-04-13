@@ -17,7 +17,7 @@
     <div class="row post_line">
         <div class="col-lg-8">
             <div class="last_posts_decor">
-                <span>Lastests Blog</span>
+                <span>Lastests Articles</span>
             </div>
         </div>
     </div>

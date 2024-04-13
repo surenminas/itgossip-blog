@@ -4,10 +4,10 @@
             <h5>API</h5>
             <ul class="api_sidebar_list">
                 <li>
-                    <a href='<?php echo BASE_URL ?>simple-api?type=post'>Simple API</a>
+                    <a href='<?php echo BASE_URL ?>simple-api?type=post'>API URL</a>
                 </li>
                 <li>
-                    <a href='<?php echo BASE_URL ?>simpleAPI'>CURL to simple API</a>
+                    <a href='<?php echo BASE_URL ?>simpleAPI'>API</a>
                 </li>
             </ul>
         </div>
@@ -15,7 +15,7 @@
 
     <div class="col-md-12">
         <div class="lastests_posts_with_photos bg_side">
-            <h5>Latest Posts With Thumbnail</h5>
+            <h5>Latest Posts</h5>
             <?php
             $last_4_posts = fetchAll([
                 'order_by' => 'id DESC',
@@ -38,6 +38,46 @@
             ]);
             ?>
             <?php foreach ($last_4_posts as $key => $posts_img) : ?>
+                <div class="lastests_posts_with_photos__block">
+                    <div class="lastests_posts_with_photos__img">
+                        <a href="<?php echo BASE_URL ?>single?page=<?php echo $posts_img['id']; ?>"><img src="uploads/posts_img/<?php echo $posts_img['img']; ?>"></a>
+                    </div>
+                    <div class="lastests_posts_with_photos__text">
+                        <p><a href="<?php echo BASE_URL ?>single?page=<?php echo $posts_img['id']; ?>"><?php echo $posts_img['title'] ?></a></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+
+    <!-- Popular Posts -->
+    <div class="col-md-12">
+        <div class="lastests_posts_with_photos bg_side">
+            <h5>Popular Posts</h5>
+            <?php
+            $popular_4_posts = fetchAll([
+                'order_by' => 'comment_count DESC',
+                'limit' => 4,
+                'select' => 'id, title, img, comment_count',
+                'table' => 'blog_posts',
+                'where' => array(
+                    'condition' => 'AND',
+                    'fields' => array(
+                        array(
+                            'key' => 'type',
+                            'value' => 'post'
+                        ),
+                        array(
+                            'key' => 'publish_status',
+                            'value' => '1'
+                        )
+                    )
+                )
+            ]);
+
+            ?>
+            <?php foreach ($popular_4_posts as $key => $posts_img) : ?>
                 <div class="lastests_posts_with_photos__block">
                     <div class="lastests_posts_with_photos__img">
                         <a href="<?php echo BASE_URL ?>single?page=<?php echo $posts_img['id']; ?>"><img src="uploads/posts_img/<?php echo $posts_img['img']; ?>"></a>

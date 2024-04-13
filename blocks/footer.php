@@ -28,8 +28,8 @@
                 <div class="socials">
                     <ul class="socials_contact">
                         <li>Armenia, Yerevan</li>
-                        <li>mail@mail.ru</li>
-                        <li>+(374)99-000-000</li>
+                        <li>surenminas@gmail.com</li>
+                        <li>+(374)99-138-000</li>
                     </ul>
                     <ul>
                         <li class="footer_first">
@@ -54,7 +54,7 @@
 </div>
 
 <div class="footer_bottom">
-    <p>Copyright 2023 by <span>IT Gossip</span>, All Right Reserved</p>
+    <p>Copyright 2023 by <span>Suren Minasyan</span>, All Right Reserved</p>
 </div>
 
 <script src="js/jquery-3.4.1.min.js"></script>
