@@ -93,7 +93,9 @@ if (isset($_POST['logout'])) {
                         <a href="photos">Gallery</a>
                     </li>
                     <?php if (getUserRole() == 'administrator') : ?>
-
+                        <li>
+                            <a href="subscribe">Subscribe</a>
+                        </li>
                         <li>
                             <a href="settings">Menu settings</a>
                         </li>

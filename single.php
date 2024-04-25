@@ -35,7 +35,6 @@
         // cache post >>> 
         $postsViewOnSinglePage = Cache::get('single_post' . $_GET['page']);
         if (!$postsViewOnSinglePage) {
-            echo "caching";
             $postsViewOnSinglePage = executeQuery(" SELECT 
             blog_posts.*, blog_categories.name as category_name, 
             users.username as author_name, users.bio as author_bio, users.author_posts_count, users.img as user_img, users.id as user_id from blog_posts 

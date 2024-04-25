@@ -3,9 +3,7 @@
         <div class="api_sidebar bg_side">
             <h5>API</h5>
             <ul class="api_sidebar_list">
-                <li>
-                    <a href='<?php echo BASE_URL ?>simple-api?type=post'>API URL</a>
-                </li>
+                
                 <li>
                     <a href='<?php echo BASE_URL ?>simpleAPI'>API</a>
                 </li>

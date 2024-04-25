@@ -37,7 +37,6 @@ if (isset($_GET['page'])) {
     // post cache >>>
     $allPostsWithCategory = Cache::get('id' . $_GET['page'] . 'page' . $page);
     if (!$allPostsWithCategory) {
-        // echo "caching";
         $allPostsWithCategory = executeQuery(
             " SELECT blog_posts.*, 
         users.author_posts_count, users.username as author_name, users.id as user_id, 

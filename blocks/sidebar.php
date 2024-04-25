@@ -114,8 +114,7 @@
     <!--  API >>> -->
     <p align="center" class="title">API</p>
     <div id="coolmenu">
-        <a href='<?php echo BASE_URL ?>simple-api?type=post'>Simple API</a>
-        <a href='<?php echo BASE_URL ?>simpleAPI'>CURL to simple API</a>
+        <a href='<?php echo BASE_URL ?>simpleAPI'>API</a>
     </div>
     <!--  API <<< -->
 

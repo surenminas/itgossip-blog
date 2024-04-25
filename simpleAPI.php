@@ -28,10 +28,15 @@ if (isset($_POST['post_type'])) {
 
 <div class="api_content">
     <!-- content -->
-
-    <h2>This API returns the latest posts/photos</h2> <!-- ????? -->
+    <h2>This API returns the latest posts/photos</h2> 
 
     <table class="table">
+        <tr>
+            <td>
+                <strong>API URL</strong>
+            </td>
+            <td><a href='<?php echo BASE_URL ?>simple-api?type=post' target="_blank"><?php echo BASE_URL ?>simple-api?type=post</a></td>
+        </tr>
         <tr>
             <td>
                 <strong>Request GET parameters:</strong>
@@ -64,7 +69,7 @@ if (isset($_POST['post_type'])) {
                     <label for="type">Posts count</label>
                 </td>
                 <td>
-                    <input type="number"  name="set_limit" id="set_limit" value="<?php if (isset($_POST['set_limit'])) echo $_POST['set_limit'];
+                    <input type="number" name="set_limit" id="set_limit" value="<?php if (isset($_POST['set_limit'])) echo $_POST['set_limit'];
                                                                                 else echo 6 ?>" placeholder="Posts Count">
                 </td>
             </tr>

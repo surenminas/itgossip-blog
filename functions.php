@@ -50,14 +50,6 @@ function lastUserActivity()
 
 function isUserLoggedIn()
 {
-    /*
-    if(isset($_SESSION['username'])){
-        return true;
-    }
-    else{
-        return false;   
-    }
-    */
 
     return isset($_SESSION['user']);
 }
@@ -310,9 +302,8 @@ function baseUrl($protocol = true, $host = true)
 
 
     $dir =  str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-    var_dump($protocol . "|" . $host . "|" . $dir);
 
-    //return $protocol . $host . $dir;
+    return $protocol . $host . $dir;
 }
 
 
