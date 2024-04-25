@@ -10,19 +10,6 @@ $errorMsgCategories = [
     'success' => []
 ];
 
-
-// Delete >>>
-if (isset($_GET['delete'])) {
-    $deletePhoto = executeQuery("DELETE FROM subscribers WHERE id = ?", [$_GET['delete']]);
-    if ($deletePhoto === false) {
-        $errorMsgCategories["error"][] = "Subscriber cannot delete";
-    } else {
-
-        $errorMsgCategories["success"][] = "Deleted";
-        // redirect();
-    }
-}
-
 /////////////////////////
 // Pagination settings/// 
 ////////////////////////
@@ -42,6 +29,18 @@ $subscriberLists = executeQuery("SELECT * FROM subscribers ORDER BY id DESC limi
 /////////////////////
 ////// End //////////
 ////////////////////
+
+// Delete >>>
+if (isset($_GET['delete'])) {
+    $deletePhoto = executeQuery("DELETE FROM subscribers WHERE id = ?", [$_GET['delete']]);
+    if ($deletePhoto === false) {
+        $errorMsgCategories["error"][] = "Subscriber cannot delete";
+    } else {
+
+        $errorMsgCategories["success"][] = "Deleted";
+        redirect();
+    }
+}
 
 if (isset($_POST['id']) && isset($_POST['delete'])) {
     $delID = $_POST['id'];

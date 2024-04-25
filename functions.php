@@ -471,6 +471,7 @@ function redirect($host = false)
     } else {
         $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '.';
     }
+    var_dump($redirect);exit;
     header("Location: $redirect");
 }
 
